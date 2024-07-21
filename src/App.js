@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './_helpers/store';  // Предполагается, что у вас есть файл store.js для Redux
+import AppRoutes from './Routes';
+import Navigation from './_components/Navigation';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+    <Provider store={store}>
+      <Router>
+        <Navigation />
+        <AppRoutes />
+      </Router>
+    </Provider>
+);
 
 export default App;
