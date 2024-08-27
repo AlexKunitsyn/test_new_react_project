@@ -9,7 +9,7 @@ import Navigation from './_components/Navigation';
 const App = () => (
     <Provider store={store}>
       <Router>
-        <Navigation test={'test!!!!!'} />
+        <Navigation test={'test!!!!!!!!'} />
         <AppRoutes />
       </Router>
     </Provider>
