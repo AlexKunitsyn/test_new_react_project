@@ -13,7 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 // import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-// import { ReactComponent as LogoHeader } from '../images/CanadaLogo.svg';
+// import LogoHeader from '../images/CanadaLogo.svg';
+import { ReactComponent as LogoHeader } from '../images/CanadaLogo.svg';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -175,7 +176,7 @@ const Navigation = (props) => {
                     >
 
                     </Typography>
-                    {/*<LogoHeader/>*/}
+                    <LogoHeader/>
                     <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
