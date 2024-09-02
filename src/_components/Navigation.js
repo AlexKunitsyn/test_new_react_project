@@ -23,6 +23,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from '@mui/material/ListItemButton';
+import Slide from '@mui/material/Slide';
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -40,29 +42,6 @@ const Search = styled('div')(({ theme }) => ({
     },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'inherit',
-    '& .MuiInputBase-input': {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create('width'),
-        width: '100%',
-        [theme.breakpoints.up('md')]: {
-            width: '20ch',
-        },
-    },
-}));
 const LinkItems = styled(Link)(({ theme }) => ({
     color: 'inherit',
     textDecoration:'none',
@@ -71,6 +50,23 @@ const LinkItems = styled(Link)(({ theme }) => ({
 
 const Navigation = (props) => {
     const {test} = props;
+
+
+    function HideOnScroll(props) {
+        const { children, window } = props;
+        // Note that you normally won't need to set the window ref as useScrollTrigger
+        // will default to window.
+        // This is only being set here because the demo is in an iframe.
+        const trigger = useScrollTrigger({
+            target: window ? window() : undefined,
+        });
+
+        return (
+            <Slide appear={false} direction="down" in={!trigger}>
+                {children ?? <div />}
+            </Slide>
+        );
+    }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -190,6 +186,7 @@ const Navigation = (props) => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
+            <HideOnScroll {...props}>
             <AppBar position="fixed" sx={{background: 'none'}}>
                 <Toolbar>
                     <LogoHeader style={{width:'100px', height:'60px'}}/>
@@ -233,6 +230,7 @@ const Navigation = (props) => {
                     </Box>
                 </Toolbar>
             </AppBar>
+            </HideOnScroll>
             {renderMobileMenu}
             {renderMenu}
 
