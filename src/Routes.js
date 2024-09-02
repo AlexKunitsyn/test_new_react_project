@@ -7,7 +7,7 @@ import AboutUs from './pages/AboutUs/AboutUS';
 const AppRoutes = () => (
     <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/about" element={<AboutUs />} />
     </Routes>
 );
 

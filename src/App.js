@@ -5,12 +5,16 @@ import { Provider } from 'react-redux';
 import store from './_helpers/store';  // Предполагается, что у вас есть файл store.js для Redux
 import AppRoutes from './Routes';
 import Navigation from './_components/Navigation';
+import HomePage from './pages/HomePage/HomePage';
+import Box from "@mui/material/Box";
 
 const App = () => (
     <Provider store={store}>
       <Router>
         <Navigation test={'test!!!!!'} />
+        <Box sx={{padding:'60px 0 0 0'}}>
         <AppRoutes />
+        </Box>
       </Router>
     </Provider>
 );

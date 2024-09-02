@@ -19,6 +19,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from '@mui/material/ListItemButton';
 
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -59,10 +63,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
+const LinkItems = styled(Link)(({ theme }) => ({
+    color: 'inherit',
+    textDecoration:'none',
+
+}));
 
 const Navigation = (props) => {
     const {test} = props;
-    console.log(test, 'test=====');
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -88,6 +96,20 @@ const Navigation = (props) => {
     };
 
     const menuId = 'primary-search-account-menu';
+    const navItems = [
+        {
+            name:'Home',
+            link:'/'
+        },
+        {
+            name:'About',
+            link:'/about'
+        },
+        {
+            name:'Contact',
+            link:'/contact'
+        }
+    ];
     const renderMenu = (
         <Menu
             anchorEl={anchorEl}
@@ -164,44 +186,27 @@ const Navigation = (props) => {
             </MenuItem>
         </Menu>
     );
+
+
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="fixed" sx={{background: 'none'}}>
                 <Toolbar>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="div"
-                        sx={{ display: { xs: 'none', sm: 'block' } }}
-                    >
-
-                    </Typography>
-                    <LogoHeader/>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search>
+                    <LogoHeader style={{width:'100px', height:'60px'}}/>
                     <Box sx={{ flexGrow: 1 }} />
+
+                        <List sx={{display:'flex', color:'#000'}}>
+                            {navItems.map((item) => (
+                                <ListItem key={item.name} disablePadding>
+                                    <ListItemButton sx={{ textAlign: 'center' }}>
+                                        <LinkItems to={item.link}>
+                                        <ListItemText primary={item.name} />
+                                        </LinkItems>
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
+                        </List>
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
                         <IconButton
                             size="large"
                             edge="end"
@@ -230,12 +235,7 @@ const Navigation = (props) => {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
-            <nav>
-                <ul>
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about-us">About Us</Link></li>
-                </ul>
-            </nav>
+
         </Box>
 
     )
