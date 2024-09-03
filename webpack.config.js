@@ -26,7 +26,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader'] // Использование style-loader и css-loader
             },
             {
-                test: /\.(png|jpg|gif|svg)$/, // Обработка изображений
+                test: /\.(png|jpe?g|gif|svg)$/i, // Обработка изображений
                 type: 'asset/resource', // Использование встроенного плагина Webpack для обработки ресурсов
                 generator: {
                     filename: 'images/[name][hash][ext][query]' // Путь для выходных файлов изображений

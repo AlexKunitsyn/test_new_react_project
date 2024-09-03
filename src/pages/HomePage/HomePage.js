@@ -5,6 +5,7 @@ import { increment, decrement } from '../../_helpers/store';
 import Box from "@mui/material/Box";
 import {styled} from "@mui/material";
 import FirstScreenImg from '../../images/firstScreen.jpg'
+// import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 const screenHeight = window.innerHeight;
 
@@ -33,7 +34,8 @@ const Home = () => {
     return (
         <MainContainer>
             <FirstScreen>
-                <img src={{FirstScreenImg}} alt="img"/>
+                {/*<img src={FirstScreenImg} alt="img"/>*/}
+                {/*<FirstScreenImg/>*/}
             </FirstScreen>
 
             <h2>Home</h2>
