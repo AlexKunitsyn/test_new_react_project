@@ -104,6 +104,14 @@ const Navigation = (props) => {
         {
             name:'Contact',
             link:'/contact'
+        },
+        {
+            name:'explore',
+            link:'/contact'
+        },
+        {
+            name:'travel',
+            link:'/contact'
         }
     ];
     const renderMenu = (
@@ -192,7 +200,7 @@ const Navigation = (props) => {
                     <LogoHeader style={{width:'100px', height:'60px'}}/>
                     <Box sx={{ flexGrow: 1 }} />
 
-                        <List sx={{display:'flex', color:'#000'}}>
+                        <List sx={{display:'flex', color:'#fff'}}>
                             {navItems.map((item) => (
                                 <ListItem key={item.name} disablePadding>
                                     <ListItemButton sx={{ textAlign: 'center' }}>
