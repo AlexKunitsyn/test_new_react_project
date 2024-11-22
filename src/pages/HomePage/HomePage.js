@@ -9,18 +9,19 @@ import FirstScreenImg from '../../images/firstScreen.jpg'
 import MainSlider from '../../_components/MainSlider';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
-const screenHeight = window.innerHeight;
+const screenHeight = window.innerHeight - 70;
+const screenHeight2 = document.documentElement.clientHeight;
 
 const FirstScreen = styled(Box)(({ theme }) => ({
-    height: screenHeight,
+    height: screenHeight+'px',
     // width: '100vw',
     top:'-70px',
     position:'relative',
     // background:FirstScreenImg,
-    // overflow:'hidden',
+    overflow:'hidden',
     '& img': {
         width:'100%',
-        // height:'100%',
+        height:'100%',
         objectFit:'cover',
 
     }
@@ -35,6 +36,7 @@ const Home = () => {
     const dispatch = useDispatch();
 
     console.log('Высота видимой области экрана:', screenHeight, 'пикселей');
+    console.log('Высота:', screenHeight2, 'пикселей');
     console.log(FirstScreenImg);
     const sliderSettings = {
         // dots: false,

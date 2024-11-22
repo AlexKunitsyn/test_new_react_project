@@ -195,7 +195,7 @@ const Navigation = (props) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <HideOnScroll {...props}>
-            <AppBar position="fixed" sx={{background: 'none'}}>
+            <AppBar position="fixed" sx={{background: 'rgba(0,0,0, 0.35)'}}>
                 <Toolbar>
                     <LogoHeader style={{width:'100px', height:'60px'}}/>
                     <Box sx={{ flexGrow: 1 }} />
