@@ -12,7 +12,7 @@ const App = () => (
     <Provider store={store}>
       <Router>
         <Navigation test={'test!!!!!'} />
-        <Box sx={{padding:'60px 0 0 0'}}>
+        <Box>
         <AppRoutes />
         </Box>
       </Router>

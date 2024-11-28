@@ -23,7 +23,6 @@ const SlideBox = styled('div')(({ theme }) => ({
         width:'100%',
         height:'100%',
         objectFit:'cover',
-
     }
 }));
 
@@ -31,6 +30,16 @@ const SliderContainer = styled(Box)(({ theme }) => ({
     overflow:'hidden',
     width:'100%',
     height:'100%',
+    '.slick-slider, .slick-list, .slick-track': {
+        height: '100%',
+    },
+    '.slick-slide': {
+        height: '100%',
+        'div':{
+            height: '100%',
+        }
+
+    }
 }));
 
 const MainSlider = (props) => {
@@ -38,20 +47,34 @@ const MainSlider = (props) => {
 
     console.log(sliderSettings,'sliderSettings1111111')
     return (
-        <Slider {...sliderSettings}>
-            <SlideBox>
-                <img src={FirstScreenImg} alt="img"/>
-            </SlideBox>
-            <SlideBox>
-                <img src={FirstScreenImg2} alt="img"/>
-            </SlideBox>
-            <SlideBox>
-                <img src={FirstScreenImg3} alt="img"/>
-            </SlideBox>
-            <SlideBox>
-                <img src={FirstScreenImg4} alt="img"/>
-            </SlideBox>
-        </Slider>
+        <SliderContainer>
+            <Slider {...sliderSettings}>
+                <SlideBox>
+                    <img src={FirstScreenImg} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg2} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg3} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg4} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg5} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg6} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg7} alt="img"/>
+                </SlideBox>
+                <SlideBox>
+                    <img src={FirstScreenImg8} alt="img"/>
+                </SlideBox>
+            </Slider>
+        </SliderContainer>
 
     )
 

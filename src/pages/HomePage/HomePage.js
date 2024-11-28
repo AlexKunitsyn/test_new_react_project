@@ -9,13 +9,13 @@ import FirstScreenImg from '../../images/firstScreen.jpg'
 import MainSlider from '../../_components/MainSlider';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
-const screenHeight = window.innerHeight - 70;
+const screenHeight = window.innerHeight;
 const screenHeight2 = document.documentElement.clientHeight;
 
 const FirstScreen = styled(Box)(({ theme }) => ({
     height: screenHeight+'px',
     // width: '100vw',
-    top:'-70px',
+    top:'0px',
     position:'relative',
     // background:FirstScreenImg,
     overflow:'hidden',
@@ -26,6 +26,18 @@ const FirstScreen = styled(Box)(({ theme }) => ({
 
     }
 }));
+const WelcomeMessage = styled(Box)(({ theme }) => ({
+   position:'absolute',
+    top:'50%',
+    left:'50%',
+    fontSize:'65px',
+    color:'#fff',
+    zIndex:'9',
+    transform:'translate(-50%,-50%)',
+}));
+const MainContent = styled(Box)(({ theme }) => ({
+
+}));
 
 const MainContainer = styled('Box')(({ theme }) => ({
 
@@ -34,6 +46,7 @@ const MainContainer = styled('Box')(({ theme }) => ({
 const Home = () => {
     const count = useSelector((state) => state.counter);
     const dispatch = useDispatch();
+    const welcome = 'Welcome';
 
     console.log('Высота видимой области экрана:', screenHeight, 'пикселей');
     console.log('Высота:', screenHeight2, 'пикселей');
@@ -47,17 +60,29 @@ const Home = () => {
         waitForAnimate: false,
         autoplay: true,
         speed: 500,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 5000,
         cssEase: "linear",
-        arrows: false
+        arrows: false,
+        adaptiveHeight: true
     };
 
     return (
         <MainContainer>
             <FirstScreen>
                 {/*<FirstScreenImg/>*/}
+                <WelcomeMessage>{welcome}</WelcomeMessage>
                 <MainSlider sliderSettings={sliderSettings}/>
             </FirstScreen>
+            <MainContent>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </MainContent>
 
             {/*<h2>Home</h2>*/}
             {/*<p>Welcome to the Home page!</p>*/}
