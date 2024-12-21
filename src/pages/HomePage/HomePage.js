@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../_helpers/store';
 import {styled} from "@mui/material";
 import { Box, Button, Typography } from '@mui/material';
-import FirstScreenImg from '../../images/firstScreen.jpg'
 
 import {scrollToTarget} from '../../_helpers/utils';
 
@@ -46,7 +45,8 @@ const MainContainer = styled('Box')(({ theme }) => ({
 }));
 
 const FeaturedProject = styled('Box')(({ theme }) => ({
-
+    // background: palette.blackMain,
+    // color: palette.orange,
 }));
 
 const Home = () => {
@@ -85,11 +85,14 @@ const Home = () => {
             </MainContent>
             <FeaturedProject>
                 <Typography
-                    variant='h3'
-                    style={{
+                    variant='h1'
+                    sx={{
+                        textAlign:'center',
+                        padding:'10px'
+                    }}
+                >Featured Projects
+                </Typography>
 
-                }}
-                >Featured Projects</Typography>
             </FeaturedProject>
             {/*<h2>Home</h2>*/}
             {/*<p>Welcome to the Home page!</p>*/}
