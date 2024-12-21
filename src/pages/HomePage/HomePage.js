@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../_helpers/store';
 import {styled} from "@mui/material";
 import { Box, Button, Typography } from '@mui/material';
+import FirstScreenImg from '../../images/firstScreen.jpg'
+import palette from '../../theme/palette';
+import typography from '../../styles/typography';
 
 import {scrollToTarget} from '../../_helpers/utils';
 
@@ -85,7 +88,7 @@ const Home = () => {
             </MainContent>
             <FeaturedProject>
                 <Typography
-                    variant='h1'
+                    variant='h5Bold'
                     sx={{
                         textAlign:'center',
                         padding:'10px'
