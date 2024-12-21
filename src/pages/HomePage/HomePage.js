@@ -2,9 +2,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../_helpers/store';
-import Box from "@mui/material/Box";
 import {styled} from "@mui/material";
+import { Box, Button, Typography } from '@mui/material';
 import FirstScreenImg from '../../images/firstScreen.jpg'
+
+import {scrollToTarget} from '../../_helpers/utils';
 
 import MainSlider from '../../_components/MainSlider';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
@@ -43,14 +45,18 @@ const MainContainer = styled('Box')(({ theme }) => ({
 
 }));
 
+const FeaturedProject = styled('Box')(({ theme }) => ({
+
+}));
+
 const Home = () => {
     const count = useSelector((state) => state.counter);
     const dispatch = useDispatch();
     const welcome = 'Welcome';
 
-    console.log('Высота видимой области экрана:', screenHeight, 'пикселей');
-    console.log('Высота:', screenHeight2, 'пикселей');
-    console.log(FirstScreenImg);
+    // console.log('Высота видимой области экрана:', screenHeight, 'пикселей');
+    // console.log('Высота:', screenHeight2, 'пикселей');
+    // console.log(FirstScreenImg);
     const sliderSettings = {
         // dots: false,
         fade: true,
@@ -74,16 +80,17 @@ const Home = () => {
                 <MainSlider sliderSettings={sliderSettings}/>
             </FirstScreen>
             <MainContent>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-            </MainContent>
+                <Button onClick={() => scrollToTarget('test')}>TEST</Button>
 
+            </MainContent>
+            <FeaturedProject>
+                <Typography
+                    variant='h3'
+                    style={{
+
+                }}
+                >Featured Projects</Typography>
+            </FeaturedProject>
             {/*<h2>Home</h2>*/}
             {/*<p>Welcome to the Home page!</p>*/}
             {/*<div style={{height:'1000px'}}>*/}

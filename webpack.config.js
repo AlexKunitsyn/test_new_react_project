@@ -23,7 +23,7 @@ module.exports = {
             },
             {
                 test: /\.css$/, // Обработка файлов .css
-                use: ['style-loader', 'css-loader'] // Использование style-loader и css-loader
+                use: ['styles-loader', 'css-loader'] // Использование styles-loader и css-loader
             },
             {
                 test: /\.(png|jpe?g|gif|svg)$/i, // Обработка изображений

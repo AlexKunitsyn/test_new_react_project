@@ -45,7 +45,7 @@ const SliderContainer = styled(Box)(({ theme }) => ({
 const MainSlider = (props) => {
     const {sliderSettings} = props;
 
-    console.log(sliderSettings,'sliderSettings1111111')
+    // console.log(sliderSettings,'sliderSettings1111111')
     return (
         <SliderContainer>
             <Slider {...sliderSettings}>
