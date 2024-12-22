@@ -12,7 +12,7 @@ const selectedGreen = '#F5FBF5';
 const hoverGreen = '#DCF9DC';
 const gray = '#BDBDBD';
 const lightGray = '#EEEEEE';
-const lightGrey = '#BDBDBD';
+// const lightGrey = '#BDBDBD';
 const contrastGray = '#F8F8F8';
 const greyButton = '#423B3B';
 const greyButtonHover = '#4f4e4e';
@@ -159,7 +159,7 @@ export default {
   secondaryGray,
   activeCategoryNotification,
   secondaryOrange,
-  lightGrey,
+  // lightGrey,
   greyBorderColor,
   priceBackground,
   greyColor,
@@ -205,7 +205,7 @@ export default {
     contrastText: mainColor,
   },
   secondary: {
-    main: orange,
+    main: mainColor,
     light: lightGray,
     dark: secondaryDark,
     success: green,

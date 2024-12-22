@@ -4,14 +4,24 @@ import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement } from '../../_helpers/store';
 import {styled} from "@mui/material";
 import { Box, Button, Typography } from '@mui/material';
-import FirstScreenImg from '../../images/firstScreen.jpg'
+
 import palette from '../../theme/palette';
 import typography from '../../styles/typography';
 
 import {scrollToTarget} from '../../_helpers/utils';
 
 import MainSlider from '../../_components/MainSlider';
+import FutureProject from "../../_components/FeatureProject";
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
+
+import FirstScreenImg from '../../images/firstScreen.jpg'
+import FirstScreenImg2 from "../../images/firstScreen2.jpg";
+import FirstScreenImg3 from "../../images/firstScreen3.jpg";
+import FirstScreenImg4 from "../../images/firstScreen4.jpg";
+import FirstScreenImg5 from "../../images/firstScreen5.jpg";
+import FirstScreenImg6 from "../../images/firstScreen6.jpg";
+import FirstScreenImg7 from "../../images/firstScreen7.jpg";
+import FirstScreenImg8 from "../../images/firstScreen8.jpg";
 
 const screenHeight = window.innerHeight;
 const screenHeight2 = document.documentElement.clientHeight;
@@ -43,14 +53,16 @@ const MainContent = styled(Box)(({ theme }) => ({
 
 }));
 
-const MainContainer = styled('Box')(({ theme }) => ({
+const MainContainer = styled(Box)(({ theme }) => ({
 
 }));
 
-const FeaturedProject = styled('Box')(({ theme }) => ({
-    // background: palette.blackMain,
+const FeaturedProject = styled(Box)(({ theme }) => ({
+    padding:'25px',
+    background: palette.lightGray,
     // color: palette.orange,
 }));
+
 
 const Home = () => {
     const count = useSelector((state) => state.counter);
@@ -75,6 +87,23 @@ const Home = () => {
         adaptiveHeight: true
     };
 
+    const projectPreview  = [
+        {
+            image: FirstScreenImg,
+            name:'test Project 1'
+        },
+        {
+            image: FirstScreenImg2,
+            name:'test Project 2'
+        },
+        {
+            image: FirstScreenImg3,
+            name: 'test Project 3'
+        }
+
+    ];
+
+
     return (
         <MainContainer>
             <FirstScreen>
@@ -83,18 +112,41 @@ const Home = () => {
                 <MainSlider sliderSettings={sliderSettings}/>
             </FirstScreen>
             <MainContent>
-                <Button onClick={() => scrollToTarget('test')}>TEST</Button>
+                <Button onClick={() => scrollToTarget('test')} variant="outlined">TEST</Button>
 
             </MainContent>
             <FeaturedProject>
-                <Typography
-                    variant='h5Bold'
-                    sx={{
-                        textAlign:'center',
-                        padding:'10px'
-                    }}
-                >Featured Projects
-                </Typography>
+                <Box>
+                    <Typography
+                        variant='h3'
+                        sx={{
+                            textAlign:'center',
+                            padding:'10px'
+                        }}
+                    >Featured Projects
+                    </Typography>
+                    <Typography
+                        variant='h6'
+                        sx={{
+                            textAlign:'center',
+                            padding:'10px'
+                        }}
+                    >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </Typography>
+
+                </Box>
+                <FutureProject itemArr={projectPreview}/>
+
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
 
             </FeaturedProject>
             {/*<h2>Home</h2>*/}
