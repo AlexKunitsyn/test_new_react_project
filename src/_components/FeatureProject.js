@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import {styled} from "@mui/material";
 import { Box, Button, Typography } from '@mui/material';
@@ -7,6 +7,7 @@ import { Box, Button, Typography } from '@mui/material';
 import Grid from "@mui/material/Grid";
 import palette from '../../src/theme/palette';
 import useTheme from "@mui/material/styles/useTheme";
+import { debounce } from 'lodash';
 
 const ProjectList = styled(Grid)(({ theme }) => ({
 
@@ -18,7 +19,7 @@ const ProjectItem = styled(Grid)(({ theme, isHovered  }) => ({
     overflow: 'hidden',
     height:'300px',
     // flexBasis: isHovered ? '50%' : '25%', // Эквивалент sm=6 или sm=3
-    transition: 'flex-basis 0.3s ease', // Плавная анимация изменения размера
+    transition: 'all 0.3s ease', // Плавная анимация изменения размера
     'img': {
         width:'100%',
         height:'100%',
@@ -40,7 +41,7 @@ const Shadow = styled(Box)(({ theme, isHovered }) => ({
     cursor:'pointer',
     opacity: isHovered ? 0 : 1, // Скрываем блок
     visibility: isHovered ? 'hidden' : 'visible',
-    transition: 'opacity 0.3s ease, visibility 0.3s ease', // Плавное исчезновение
+    transition: isHovered ?'opacity 0.5s ease, hidden 0.5s ease' : 'opacity 0.3s ease, visibility 0.3s ease', // Плавное исчезновение
 
 }));
 
@@ -51,6 +52,15 @@ const FutureProject = props => {
 
   const [hoveredIndex, setHoveredIndex] = useState(0);
 
+    const debouncedHandleMouseEnter = useMemo(() =>
+            debounce((index) => setHoveredIndex(index), 150),
+        []);
+
+    const handleMouseLeave = (i) => {
+        setHoveredIndex(i);
+        debouncedHandleMouseEnter.cancel(); // Очищает дебаунс
+    };
+
   console.log(itemArr,'itemArr!!!!')
 
   return (
@@ -59,8 +69,8 @@ const FutureProject = props => {
               <ProjectItem item sm={hoveredIndex === i ? 6 : 3 }
                key={i}
                isHovered={hoveredIndex === i}
-               onMouseEnter={() => setHoveredIndex(i)}
-               onMouseLeave={() => setHoveredIndex(0)}
+               onMouseEnter={() => debouncedHandleMouseEnter(i)}
+               onMouseLeave={()=>handleMouseLeave(i)}
               >
                   {console.log(hoveredIndex,'-------hoveredIndex')}
                  <img src={el.image} alt={'img'}/>
