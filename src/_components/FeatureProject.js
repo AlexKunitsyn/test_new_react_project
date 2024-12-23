@@ -45,6 +45,14 @@ const Shadow = styled(Box)(({ theme, isHovered }) => ({
 
 }));
 
+const ProjectListFooter = styled(Box)(() => ({
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    background: palette.tiffanyBlue,
+    padding:'25px',
+    width: '100%',
+}));
 
 const FutureProject = props => {
   const  {itemArr} = props;
@@ -81,6 +89,20 @@ const FutureProject = props => {
                   }
               </ProjectItem>
               ))}
+          <ProjectListFooter>
+              <Typography sx={{padding:'0 40px'}} variant='h6' color={palette.mainColor}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, ratione!</Typography>
+              <Button
+                      style={{
+                          width:'130px',
+                          height:'40px',
+                          border:'1px solid #fff',
+                          borderRadius: '20px',
+                          color:palette.mainColor
+                      }}
+              >Submit now</Button>
+          </ProjectListFooter>
+
+
 
       </ProjectList>
   )

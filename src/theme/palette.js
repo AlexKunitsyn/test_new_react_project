@@ -55,6 +55,7 @@ const darkIcons = '#928585';
 const darkBorder = '#928585';
 const darkColor = '#928585';
 const selectedOptionBackground = '#B3A4A4';
+const tiffanyBlue = '#13c8a4';
 
 const currencyRow = 'rgba(88, 211, 225, 0.2)';
 const contractorRow = 'rgba(144, 231, 57, 0.2)';
@@ -194,6 +195,8 @@ export default {
   darkGreyColor,
   subHeaderBackground,
   selectedOptionBackground,
+  tiffanyBlue,
+
   primary: {
     main: orange,
     light: mainColor,
