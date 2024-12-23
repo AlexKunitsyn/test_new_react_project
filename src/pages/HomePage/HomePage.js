@@ -12,6 +12,7 @@ import {scrollToTarget} from '../../_helpers/utils';
 
 import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
+import OurService from "../../_components/OurService";
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
@@ -58,7 +59,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 }));
 
 const FeaturedProject = styled(Box)(({ theme }) => ({
-    padding:'25px',
+    padding:'25px 0',
     background: palette.lightGray,
     // color: palette.orange,
 }));
@@ -129,13 +130,14 @@ const Home = () => {
                         variant='h6'
                         sx={{
                             textAlign:'center',
-                            padding:'10px'
+                            padding:'10px 10px 30px'
                         }}
                     >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </Typography>
 
                 </Box>
                 <FutureProject itemArr={projectPreview}/>
+                <OurService/>
 
                 <br/>
                 <br/>

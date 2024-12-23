@@ -69,8 +69,6 @@ const FutureProject = props => {
         debouncedHandleMouseEnter.cancel(); // Очищает дебаунс
     };
 
-  console.log(itemArr,'itemArr!!!!')
-
   return (
       <ProjectList container>
           {itemArr?.map((el, i) => (
@@ -80,7 +78,7 @@ const FutureProject = props => {
                onMouseEnter={() => debouncedHandleMouseEnter(i)}
                onMouseLeave={()=>handleMouseLeave(i)}
               >
-                  {console.log(hoveredIndex,'-------hoveredIndex')}
+
                  <img src={el.image} alt={'img'}/>
                   {i !== 0 &&
                       <Shadow isHovered={hoveredIndex === i}>
