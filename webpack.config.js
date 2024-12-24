@@ -44,12 +44,15 @@ module.exports = {
         })
     ],
     resolve: {
-        extensions: ['.js', '.jsx'] // Расширения файлов, которые Webpack будет обрабатывать
+        extensions: ['.js', '.jsx'], // Расширения файлов, которые Webpack будет обрабатывать
+        alias: {
+            '@mui/material': '@mui/joy',
+        },
     },
     devServer: {
         static: path.join(__dirname, 'dist'), // Директория для статических файлов
         compress: true, // Включение сжатия
         port: 3000, // Порт сервера
         historyApiFallback: true // Поддержка History API для React Router
-    }
+    },
 };
