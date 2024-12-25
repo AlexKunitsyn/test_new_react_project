@@ -1,7 +1,9 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useEffect} from 'react';
 
 import {styled} from "@mui/material";
 import { Box, Button, Typography, IconButton } from '@mui/material';
+import PropTypes from 'prop-types';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 import Grid from "@mui/material/Grid";
@@ -14,6 +16,8 @@ import { AiFillEnvironment } from "react-icons/ai";
 import { FaCamera } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
+import AnimatedCircularProgress from "../_components/CircularProgress";
+
 const OurServiceContainer = styled(Grid)(({ theme }) => ({
     padding:'50px 0',
 }));
@@ -21,6 +25,9 @@ const OurServiceContainer = styled(Grid)(({ theme }) => ({
 const OurService = props => {
     const  {itemArr} = props;
     const [visibleItem, setVisibleItem] =  useState(0);
+
+
+
 
     const serviceList = [
         {
@@ -59,21 +66,21 @@ const OurService = props => {
             </Box>
             <Grid container>
                 <Grid container item sm={6}>
-                    <Grid item sm={1}>
-                        <IconButton onClick={()=> SelectService(0)}>
-                            <SiAircanada />
+                    <Grid item sm={2}>
+                        <IconButton style={{padding:'10px'}} onClick={()=> SelectService(0)}>
+                            <SiAircanada size={40}/>
                         </IconButton>
-                        <IconButton onClick={()=> SelectService(1)}>
-                            <AiFillEnvironment />
+                        <IconButton style={{padding:'10px'}} onClick={()=> SelectService(1)}>
+                            <AiFillEnvironment size={38}/>
                         </IconButton>
-                        <IconButton onClick={()=> SelectService(2)}>
-                            <FaCamera />
+                        <IconButton style={{padding:'10px'}} onClick={()=> SelectService(2)}>
+                            <FaCamera size={38}/>
                         </IconButton>
-                        <IconButton onClick={()=> SelectService(3)}>
-                            <FaHeart />
+                        <IconButton style={{padding:'10px'}} onClick={()=> SelectService(3)}>
+                            <FaHeart size={38}/>
                         </IconButton>
                     </Grid>
-                    <Grid item sm={11}>
+                    <Grid item sm={10}>
                         {serviceList?.map((el, i) => (
                             <>
                                 {visibleItem === i &&
@@ -87,7 +94,11 @@ const OurService = props => {
                     </Grid>
                 </Grid>
                 <Grid item sm={6}>
-
+                    <Box display="flex" justifyContent="space-around" p={4}>
+                        <Box > {/* Этот блок заставляет прогресс-бар быть ниже видимой части */}
+                            <AnimatedCircularProgress targetValue={75} />
+                        </Box>
+                    </Box>
                 </Grid>
             </Grid>
 
