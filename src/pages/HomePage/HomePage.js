@@ -13,6 +13,7 @@ import {scrollToTarget} from '../../_helpers/utils';
 import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
 import OurService from "../../_components/OurService";
+import OurPortfolio from "../../_components/OurPortfolio";
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
@@ -23,6 +24,7 @@ import FirstScreenImg5 from "../../images/firstScreen5.jpg";
 import FirstScreenImg6 from "../../images/firstScreen6.jpg";
 import FirstScreenImg7 from "../../images/firstScreen7.jpg";
 import FirstScreenImg8 from "../../images/firstScreen8.jpg";
+
 
 const screenHeight = window.innerHeight;
 const screenHeight2 = document.documentElement.clientHeight;
@@ -138,6 +140,7 @@ const Home = () => {
                 </Box>
                 <FutureProject itemArr={projectPreview}/>
                 <OurService/>
+                <OurPortfolio/>
 
                 <br/>
                 <br/>
