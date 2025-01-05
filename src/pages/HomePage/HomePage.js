@@ -60,7 +60,7 @@ const MainContainer = styled(Box)(({ theme }) => ({
 
 const FeaturedProject = styled(Box)(({ theme }) => ({
     padding:'25px 0',
-    background: palette.lightGray,
+    // background: palette.lightGray,
     // color: palette.orange,
 }));
 

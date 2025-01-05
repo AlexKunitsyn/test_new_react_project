@@ -1,5 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { CircularProgress, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import CircularProgress, {
+    circularProgressClasses,
+} from '@mui/material/CircularProgress';
+
 
 const AnimatedCircularProgress = ({ targetValue }) => {
     const [progress, setProgress] = useState(0);
@@ -47,6 +51,44 @@ const AnimatedCircularProgress = ({ targetValue }) => {
         }
     }, [isVisible, targetValue]);
 
+    function FacebookCircularProgress(props) {
+        return (
+            <Box sx={{ position: 'relative' }}>
+                <CircularProgress
+                    variant="determinate"
+                    sx={(theme) => ({
+                        color: theme.palette.grey[200],
+                        ...theme.applyStyles('dark', {
+                            color: theme.palette.grey[800],
+                        }),
+                    })}
+                    size={200}
+                    thickness={4}
+                    {...props}
+                    value={100}
+                />
+                <CircularProgress
+                    variant="determinate"
+                    value={progress}
+                    thickness={4}
+                    size={200}
+                    sx={(theme) => ({
+                        color: '#1a90ff',
+                        animationDuration: '550ms',
+                        position: 'absolute',
+                        left: 0,
+                        [`& .${circularProgressClasses.circle}`]: {
+                            strokeLinecap: 'round',
+                        },
+                        ...theme.applyStyles('dark', {
+                            color: '#141fe8',
+                        }),
+                    })}
+                />
+            </Box>
+        );
+    }
+
     return (
         <Box
             ref={ref} // Привязываем реф к элементу
@@ -54,17 +96,13 @@ const AnimatedCircularProgress = ({ targetValue }) => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            sx={{ position: 'relative', width: 100, height: 100 }}
+            sx={{ position: 'relative', width: 300, height: 300 }}
         >
+            <FacebookCircularProgress />
             {/* Прогресс */}
-            <CircularProgress
-                variant="determinate"
-                value={progress}
-                thickness={4}
-                sx={{
-                    color: '#4caf50', // Цвет кольца
-                }}
-            />
+
+
+
             {/* Текст с процентом внутри */}
             <Box
                 sx={{
@@ -78,7 +116,10 @@ const AnimatedCircularProgress = ({ targetValue }) => {
                     height: '100%',
                 }}
             >
-                <Typography variant="h6" color="text.primary">
+                <Typography
+                    variant="h3"
+                    color="text.primary"
+                >
                     {`${Math.round(progress)}%`}
                 </Typography>
             </Box>
