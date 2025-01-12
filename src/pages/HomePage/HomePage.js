@@ -1,7 +1,7 @@
 // pages/Home.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../_helpers/store';
+import { increment, decrement } from '../../redux/store';
 import {styled} from "@mui/material";
 import { Box, Button, Typography } from '@mui/material';
 

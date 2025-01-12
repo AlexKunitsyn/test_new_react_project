@@ -9,6 +9,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { createClient } from 'pexels';
 
 import AnimatedCircularProgress from "../_components/CircularProgress";
 
@@ -17,9 +18,18 @@ const TabItem = styled(Tab)(({}) => ({
 }));
 
 const OurPortfolio = props => {
+
     const  {itemArr} = props;
     const [visibleItem, setVisibleItem] =  useState(0);
     const [value, setValue] = React.useState(0);
+    const client = createClient('GLSsEG4TOZ1WfStWbRV2taqBGqmHNgEoky6pG0hPf1XS4LjKaBq8Iblt');
+
+    client.collections.featured({ per_page: 10 }).then(collections => {
+        // console.log(collections,'!!!!!!collections')
+    });
+    // client.photos.show({ id: 2014422 }).then(photo => { console.log(photo,'!!!!!!photo')});
+
+
 
     function CustomTabPanel(props) {
         const { children, value, index, ...other } = props;

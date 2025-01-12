@@ -195,7 +195,7 @@ const Navigation = (props) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
             <HideOnScroll {...props}>
-            <AppBar position="fixed" sx={{background: 'rgba(0,0,0, 0.35)'}}>
+            <AppBar position="fixed" sx={{background: 'rgba(0,0,0, 0.75)'}}>
                 <Toolbar>
                     <LogoHeader style={{width:'100px', height:'60px'}}/>
                     <Box sx={{ flexGrow: 1 }} />
@@ -205,7 +205,7 @@ const Navigation = (props) => {
                                 <ListItem key={item.name} disablePadding>
                                     <ListItemButton sx={{ textAlign: 'center' }}>
                                         <LinkItems to={item.link}>
-                                        <ListItemText primary={item.name} />
+                                        <ListItemText secondary={item.name}  />
                                         </LinkItems>
                                     </ListItemButton>
                                 </ListItem>

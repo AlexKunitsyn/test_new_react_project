@@ -2,7 +2,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './_helpers/store';  // Предполагается, что у вас есть файл store.js для Redux
+import store from './redux/store';  // Предполагается, что у вас есть файл store.js для Redux
 import AppRoutes from './Routes';
 import Navigation from './_components/Navigation';
 import HomePage from './pages/HomePage/HomePage';
