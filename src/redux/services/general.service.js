@@ -1,5 +1,5 @@
-// import { IGeneralData } from 'types/index';
-// import { baseApi } from '@redux/services/base.service';
+// import { IGeneralData } from '../../types/index';
+// import { baseApi } from './base.service';
 //
 // interface IGeneralDataRequest {
 //   customer_id: number;
