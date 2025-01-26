@@ -1,18 +1,35 @@
-// import { IGeneralData } from '../../types/index';
-// import { baseApi } from './base.service';
-//
-// interface IGeneralDataRequest {
-//   customer_id: number;
-// }
-//
-// interface IStaticPageRequest {
-//   slug: string;
-// }
-//
-// export interface IGeneralDataResponse {
-//   data: IGeneralData;
-// }
-//
+import { IGeneralData } from '../../types/index';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+interface IGeneralDataRequest {
+  customer_id: number;
+}
+
+interface IStaticPageRequest {
+  slug: string;
+}
+
+export interface IGeneralDataResponse {
+  data: IGeneralData;
+}
+export const generalApi = createApi({
+    reducerPath: 'api', // Имя среза в сторе
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com' }), // Базовый URL API
+    endpoints: (builder) => ({
+        // Пример GET-запроса для получения списка постов
+        getPosts: builder.query({
+            query: () => '/posts', // Относительный путь к эндпоинту
+        }),
+        // Пример POST-запроса для создания нового поста
+        addPost: builder.mutation({
+            query: (newPost) => ({
+                url: '/posts',
+                method: 'POST',
+                body: newPost,
+            }),
+        }),
+    }),
+});
+
 // export const generalApi = baseApi.injectEndpoints({
 //   endpoints: (build) => ({
 //     getFrontEndData: build.query<IGeneralDataResponse, IGeneralDataRequest>({
@@ -45,7 +62,6 @@
 //     }),
 //   }),
 // });
-//
-// export const { useGetFrontEndDataQuery, useLazyGetStaticPageQuery } = generalApi;
-//
-// export const {} = generalApi.endpoints;
+// Экспортируем хуки для работы с запросами
+export const { useGetPostsQuery, useAddPostMutation } = generalApi;
+

@@ -14,6 +14,7 @@ import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
 import OurService from "../../_components/OurService";
 import OurPortfolio from "../../_components/OurPortfolio";
+import { useGetPostsQuery } from '../../redux/services/general.service';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
@@ -106,6 +107,9 @@ const Home = () => {
 
     ];
 
+    const { data: posts, error, isLoading } = useGetPostsQuery();
+
+    console.log(posts, 'posts')
 
     return (
         <MainContainer>
