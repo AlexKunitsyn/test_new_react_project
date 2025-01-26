@@ -14,7 +14,7 @@ import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
 import OurService from "../../_components/OurService";
 import OurPortfolio from "../../_components/OurPortfolio";
-import { useGetPostsQuery } from '../../redux/services/general.service';
+import {useLazyGetPostsQuery} from '../../redux/services/general.service';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
@@ -107,9 +107,16 @@ const Home = () => {
 
     ];
 
-    const { data: posts, error, isLoading } = useGetPostsQuery();
+    const [triggerGetPosts, responseGetPosts] = useLazyGetPostsQuery();
 
-    console.log(posts, 'posts')
+    // const { data: posts, error, isLoading } = useGetPostsQuery();
+
+    const testApi = () => {
+        console.log('origjnfrgidfgvnb')
+        triggerGetPosts()
+    };
+
+    console.log(responseGetPosts, 'responseGetPosts')
 
     return (
         <MainContainer>
@@ -120,6 +127,7 @@ const Home = () => {
             </FirstScreen>
             <MainContent>
                 <Button onClick={() => scrollToTarget('test')} variant="outlined">TEST</Button>
+                <Button onClick={() => testApi()} variant="outlined">test Api</Button>
 
             </MainContent>
             <FeaturedProject>

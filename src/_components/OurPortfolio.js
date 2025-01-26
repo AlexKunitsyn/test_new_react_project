@@ -24,9 +24,9 @@ const OurPortfolio = props => {
     const [value, setValue] = React.useState(0);
     const client = createClient('GLSsEG4TOZ1WfStWbRV2taqBGqmHNgEoky6pG0hPf1XS4LjKaBq8Iblt');
 
-    client.collections.featured({ per_page: 10 }).then(collections => {
-        // console.log(collections,'!!!!!!collections')
-    });
+    // client.collections.featured({ per_page: 10 }).then(collections => {
+    //     // console.log(collections,'!!!!!!collections')
+    // });
     // client.photos.show({ id: 2014422 }).then(photo => { console.log(photo,'!!!!!!photo')});
 
 

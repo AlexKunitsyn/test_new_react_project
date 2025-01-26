@@ -18,6 +18,19 @@ export const generalApi = createApi({
         // Пример GET-запроса для получения списка постов
         getPosts: builder.query({
             query: () => '/posts', // Относительный путь к эндпоинту
+            query: (arg) => {
+                // const { customerId, currencyId, customerCartId, list } = arg;
+                return {
+                    url: '/posts',
+                    method: 'get',
+                    // data: {
+                    //     customer_cart_id: customerCartId,
+                    //     customer_id: customerId,
+                    //     show_currency_id: currencyId,
+                    //     list,
+                    // },
+                };
+            },
         }),
         // Пример POST-запроса для создания нового поста
         addPost: builder.mutation({
@@ -63,5 +76,5 @@ export const generalApi = createApi({
 //   }),
 // });
 // Экспортируем хуки для работы с запросами
-export const { useGetPostsQuery, useAddPostMutation } = generalApi;
+export const { useLazyGetPostsQuery, useAddPostMutation } = generalApi;
 
