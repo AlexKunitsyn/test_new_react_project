@@ -40,8 +40,28 @@ export const generalApi = createApi({
                 body: newPost,
             }),
         }),
+
+        // get photos list
+        getPhotoList: builder.query({
+            query: () => ({
+                url: '/photos/1',
+                method: 'GET',
+
+            }),
+        }),
+
+        // get photos list
+        getAlbums: builder.query({
+            query: () => ({
+                url: '/albums/1/photos',
+                method: 'GET',
+
+            }),
+        }),
     }),
 });
+
+
 
 // export const generalApi = baseApi.injectEndpoints({
 //   endpoints: (build) => ({
@@ -76,5 +96,5 @@ export const generalApi = createApi({
 //   }),
 // });
 // Экспортируем хуки для работы с запросами
-export const { useLazyGetPostsQuery, useAddPostMutation } = generalApi;
+export const { useLazyGetPostsQuery, useAddPostMutation,  useLazyGetPhotoListQuery, useLazyGetAlbumsQuery } = generalApi;
 

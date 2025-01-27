@@ -12,6 +12,8 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { createClient } from 'pexels';
 
 import AnimatedCircularProgress from "../_components/CircularProgress";
+import {useLazyGetAlbumsQuery} from "../redux/services/general.service";
+import {useLazyGetPhotosQuery} from "../redux/services/pixels.service";
 
 const TabItem = styled(Tab)(({}) => ({
     color:'#000'
@@ -23,11 +25,42 @@ const OurPortfolio = props => {
     const [visibleItem, setVisibleItem] =  useState(0);
     const [value, setValue] = React.useState(0);
     const client = createClient('GLSsEG4TOZ1WfStWbRV2taqBGqmHNgEoky6pG0hPf1XS4LjKaBq8Iblt');
+    const [triggerGetAlbums, responseGetAlbums] = useLazyGetAlbumsQuery();
+    const [triggerGetPhotos, responseGetPhotos] = useLazyGetPhotosQuery();
+    console.log(responseGetAlbums);
+
+    useEffect(() => {
+        console.log(value,'111111value')
+        triggerGetPhotos('nature')
+
+    }, [value]);
+
+    console.log(responseGetPhotos,'responseGetPhotos');
+
+    const API_KEY = client; // Замените на ваш ключ
+    const query = 'nature';
+    const perPage = 20;
+
+    fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=${perPage}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${API_KEY}`
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Полученные фотографии:', data.photos);
+        })
+        .catch(error => {
+            console.error('Ошибка при выполнении запроса:', error);
+        });
 
     // client.collections.featured({ per_page: 10 }).then(collections => {
     //     // console.log(collections,'!!!!!!collections')
     // });
     // client.photos.show({ id: 2014422 }).then(photo => { console.log(photo,'!!!!!!photo')});
+
+
 
 
 
@@ -166,7 +199,20 @@ const OurPortfolio = props => {
 
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <Box sx={{overflowY: 'scroll' }}>
+                    <ImageList variant="masonry" cols={3} gap={8}>
+                        {responseGetAlbums?.data?.map((item) => (
+                            <ImageListItem key={item.img}>
+                                <img
+                                    srcSet={`${item.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    src={`${item.url}?w=248&fit=crop&auto=format`}
+                                    alt={item.title}
+                                    loading="lazy"
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                </Box>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Item Three
