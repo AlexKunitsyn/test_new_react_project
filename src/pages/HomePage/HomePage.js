@@ -14,8 +14,8 @@ import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
 import OurService from "../../_components/OurService";
 import OurPortfolio from "../../_components/OurPortfolio";
-import {useLazyGetPostsQuery} from '../../redux/services/general.service';
-import {useLazyGetPhotoListQuery} from '../../redux/services/general.service';
+// import {useLazyGetPostsQuery} from '../../redux/services/general.service';
+// import {useLazyGetPhotoListQuery} from '../../redux/services/general.service';
 // import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
@@ -108,18 +108,18 @@ const Home = () => {
 
     ];
 
-    const [triggerGetPosts, responseGetPosts] = useLazyGetPostsQuery();
-    const [triggerGetPhotoList, responseGetPhotoList] = useLazyGetPhotoListQuery();
+    // const [triggerGetPosts, responseGetPosts] = useLazyGetPostsQuery();
+    // const [triggerGetPhotoList, responseGetPhotoList] = useLazyGetPhotoListQuery();
 
     // const { data: posts, error, isLoading } = useGetPostsQuery();
 
     const testApi = () => {
-        console.log('origjnfrgidfgvnb')
-        triggerGetPosts()
-        triggerGetPhotoList()
+        // console.log('origjnfrgidfgvnb')
+        // triggerGetPosts()
+        // triggerGetPhotoList()
     };
 
-    console.log(responseGetPhotoList, 'responseGetPhotoList')
+    // console.log(responseGetPhotoList, 'responseGetPhotoList')
 
     return (
         <MainContainer>
