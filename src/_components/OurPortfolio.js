@@ -28,13 +28,6 @@ const OurPortfolio = props => {
     const client = createClient('GLSsEG4TOZ1WfStWbRV2taqBGqmHNgEoky6pG0hPf1XS4LjKaBq8Iblt');
     const [triggerGetAlbumsLexicaApi, responseGetAlbumsLexicaApi] = useLazyGetAlbumsLexicaApiQuery();
     const [triggerGetPhotos, responseGetPhotos] = useLazyGetPhotosQuery();
-    // console.log(responseGetAlbums);
-
-    // useEffect(() => {
-    //     console.log(value,'111111value')
-    //     triggerGetPhotos('nature')
-    //
-    // }, [value]);
 
 
     console.log(responseGetAlbumsLexicaApi,'responseGetAlbumsLexicaApi');
