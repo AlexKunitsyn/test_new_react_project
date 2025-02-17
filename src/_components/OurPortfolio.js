@@ -24,7 +24,7 @@ const OurPortfolio = props => {
 
     const  {itemArr} = props;
     const [visibleItem, setVisibleItem] =  useState(0);
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState('ocean');
     const client = createClient('GLSsEG4TOZ1WfStWbRV2taqBGqmHNgEoky6pG0hPf1XS4LjKaBq8Iblt');
     const [triggerGetAlbumsLexicaApi, responseGetAlbumsLexicaApi] = useLazyGetAlbumsLexicaApiQuery();
     const [triggerGetPhotos, responseGetPhotos] = useLazyGetPhotosQuery();
@@ -36,39 +36,8 @@ const OurPortfolio = props => {
     //
     // }, [value]);
 
-    useEffect(() => {
-        console.log('111111value')
-        triggerGetAlbumsLexicaApi('mountains')
-
-    }, []);
 
     console.log(responseGetAlbumsLexicaApi,'responseGetAlbumsLexicaApi');
-
-    const API_KEY = client; // Замените на ваш ключ
-    const query = 'nature';
-    const perPage = 20;
-
-    // fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=${perPage}`, {
-    //     method: 'GET',
-    //     headers: {
-    //         Authorization: `Bearer ${API_KEY}`
-    //     }
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         console.log('Полученные фотографии:', data.photos);
-    //     })
-    //     .catch(error => {
-    //         console.error('Ошибка при выполнении запроса:', error);
-    //     });
-
-    // client.collections.featured({ per_page: 10 }).then(collections => {
-    //     // console.log(collections,'!!!!!!collections')
-    // });
-    // client.photos.show({ id: 2014422 }).then(photo => { console.log(photo,'!!!!!!photo')});
-
-
-
 
 
     function CustomTabPanel(props) {
@@ -102,6 +71,22 @@ const OurPortfolio = props => {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        switch (newValue) {
+            case 0:
+
+                triggerGetAlbumsLexicaApi('ocean');
+                break;
+            case 1:
+                triggerGetAlbumsLexicaApi('mountain');
+                break;
+            case 2:
+                triggerGetAlbumsLexicaApi('trees');
+                break;
+            default:
+                triggerGetAlbumsLexicaApi('ocean');
+        }
+        console.log(newValue,'-------newValue')
+
     };
 
     function a11yProps(index) {
@@ -191,12 +176,12 @@ const OurPortfolio = props => {
             <CustomTabPanel value={value} index={0}>
                 <Box sx={{overflowY: 'scroll' }}>
                     <ImageList variant="masonry" cols={3} gap={8}>
-                        {itemData.map((item) => (
+                        {responseGetAlbumsLexicaApi?.data?.hits?.map((item) => (
                             <ImageListItem key={item.img}>
                                 <img
-                                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                    src={`${item.img}?w=248&fit=crop&auto=format`}
-                                    alt={item.title}
+                                    srcSet={`${item.largeImageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    src={`${item.largeImageURL}?w=248&fit=crop&auto=format`}
+                                    alt={item.tags}
                                     loading="lazy"
                                 />
                             </ImageListItem>
@@ -222,7 +207,20 @@ const OurPortfolio = props => {
                 </Box>
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
-                Item Three
+                <Box sx={{overflowY: 'scroll' }}>
+                    <ImageList variant="masonry" cols={3} gap={8}>
+                        {responseGetAlbumsLexicaApi?.data?.hits?.map((item) => (
+                            <ImageListItem key={item.img}>
+                                <img
+                                    srcSet={`${item.largeImageURL}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    src={`${item.largeImageURL}?w=248&fit=crop&auto=format`}
+                                    alt={item.tags}
+                                    loading="lazy"
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
+                </Box>
             </CustomTabPanel>
         </Box>
     )
