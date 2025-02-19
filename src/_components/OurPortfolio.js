@@ -30,8 +30,6 @@ const OurPortfolio = props => {
     const [triggerGetPhotos, responseGetPhotos] = useLazyGetPhotosQuery();
 
 
-    console.log(responseGetAlbumsLexicaApi,'responseGetAlbumsLexicaApi');
-
 
     function CustomTabPanel(props) {
         const { children, value, index, ...other } = props;
