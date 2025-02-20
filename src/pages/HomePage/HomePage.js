@@ -14,18 +14,11 @@ import MainSlider from '../../_components/MainSlider';
 import FutureProject from "../../_components/FeatureProject";
 import OurService from "../../_components/OurService";
 import OurPortfolio from "../../_components/OurPortfolio";
-// import {useLazyGetPostsQuery} from '../../redux/services/general.service';
-// import {useLazyGetPhotoListQuery} from '../../redux/services/general.service';
-// import { ReactComponent as FirstScreenImg } from '../../images/firstScreen.jpg';
+
 
 import FirstScreenImg from '../../images/firstScreen.jpg'
 import FirstScreenImg2 from "../../images/firstScreen2.jpg";
 import FirstScreenImg3 from "../../images/firstScreen3.jpg";
-import FirstScreenImg4 from "../../images/firstScreen4.jpg";
-import FirstScreenImg5 from "../../images/firstScreen5.jpg";
-import FirstScreenImg6 from "../../images/firstScreen6.jpg";
-import FirstScreenImg7 from "../../images/firstScreen7.jpg";
-import FirstScreenImg8 from "../../images/firstScreen8.jpg";
 
 
 const screenHeight = window.innerHeight;
