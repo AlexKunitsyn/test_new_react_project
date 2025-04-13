@@ -1,12 +1,12 @@
 // pages/Home.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { increment, decrement } from '../../redux/store';
+// import { increment, decrement } from '../../redux/store';
 import {styled} from "@mui/material";
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, Stack } from '@mui/material';
 
-import palette from '../../theme/palette';
-import typography from '../../styles/typography';
+// import palette from '../../theme/palette';
+// import typography from '../../styles/typography';
 
 import {scrollToTarget} from '../../_helpers/utils';
 
@@ -19,6 +19,7 @@ import OurPortfolio from "../../_components/OurPortfolio";
 import FirstScreenImg from '../../images/firstScreen.jpg'
 import FirstScreenImg2 from "../../images/firstScreen2.jpg";
 import FirstScreenImg3 from "../../images/firstScreen3.jpg";
+import TeamSlider from "../../_components/TeamSlider";
 
 
 const screenHeight = window.innerHeight;
@@ -38,6 +39,14 @@ const FirstScreen = styled(Box)(({ theme }) => ({
 
     }
 }));
+
+const MainContent = styled(Box)(({ theme }) => ({
+
+}));
+
+const MainContainer = styled(Box)(({ theme }) => ({
+
+}));
 const WelcomeMessage = styled(Box)(({ theme }) => ({
    position:'absolute',
     top:'50%',
@@ -47,18 +56,16 @@ const WelcomeMessage = styled(Box)(({ theme }) => ({
     zIndex:'9',
     transform:'translate(-50%,-50%)',
 }));
-const MainContent = styled(Box)(({ theme }) => ({
-
-}));
-
-const MainContainer = styled(Box)(({ theme }) => ({
-
-}));
 
 const FeaturedProject = styled(Box)(({ theme }) => ({
     padding:'25px 0',
     // background: palette.lightGray,
     // color: palette.orange,
+}));
+
+const TheTeam = styled(Box)(({ theme }) => ({
+    padding:'0',
+
 }));
 
 
@@ -148,27 +155,41 @@ const Home = () => {
                 </Box>
                 <FutureProject itemArr={projectPreview}/>
                 <OurService/>
-                <OurPortfolio/>
-
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-
+                {/*<OurPortfolio/>*/}
             </FeaturedProject>
-            {/*<h2>Home</h2>*/}
-            {/*<p>Welcome to the Home page!</p>*/}
-            {/*<div style={{height:'1000px'}}>*/}
-            {/*    <p>Counter: {count}</p>*/}
-            {/*    <button onClick={() => dispatch(increment())}>Increment</button>*/}
-            {/*    <button onClick={() => dispatch(decrement())}>Decrement</button>*/}
-            {/*</div>*/}
+            <TheTeam>
+                <Box
+                    display="flex"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    <Typography
+                        variant='h3'
+                        sx={{
+                            textAlign:'center',
+                            padding:'10px 10px 30px',
+                            textTransform:'uppercase'
+                        }}>
+                        The Team
+                    </Typography>
+                    <Typography
+                        variant='p'
+                        sx={{
+                            fontSize:'18px',
+                            textAlign:'center',
+                            width:'500px'
+                        }}
+                    >
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, voluptate.
+                    </Typography>
+                    <Box>
+                        <TeamSlider/>
+                    </Box>
+                </Box>
+
+            </TheTeam>
+
         </MainContainer>
     );
 };
